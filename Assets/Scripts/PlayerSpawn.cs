@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSpawn : MonoBehaviour
 {
 
-    public GameObject playerPrefab;
+    public GameObject[] playerPrefabs;
 
     [HideInInspector]
     public GameObject player;
@@ -16,13 +16,15 @@ public class PlayerSpawn : MonoBehaviour
     public GameObject[] spawnPoints;
 
     private int randomInt;
+    private int randomIntPlayer;
 
     // Start is called before the first frame update
     void Awake()
     {
         randomInt = Random.Range(0, spawnPoints.Length);
+        randomInt = Random.Range(0, playerPrefabs.Length);
 
-        player = Instantiate(playerPrefab, spawnPoints[randomInt].transform.position, Quaternion.identity);
+        player = Instantiate(playerPrefabs[randomInt], spawnPoints[randomInt].transform.position, Quaternion.identity);
         playerMovement = player.GetComponent<PlayerMovement>();
     }
 

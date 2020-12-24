@@ -1171,6 +1171,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 797581502}
     - target: {fileID: 5724155911630798053, guid: 3eaa8dca3e5302e408795fc397e01165, type: 3}
+      propertyPath: Spikes
+      value: 
+      objectReference: {fileID: 1561331122}
+    - target: {fileID: 5724155911630798053, guid: 3eaa8dca3e5302e408795fc397e01165, type: 3}
       propertyPath: playerSpawner
       value: 
       objectReference: {fileID: 2078457512}
@@ -2990,7 +2994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec424c6fe05ebc408763f477599cf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 2695116148696317991, guid: a0ebe410385cf8f42857d13513229649, type: 3}
+  playerPrefabs:
+  - {fileID: 2695116148696317991, guid: a0ebe410385cf8f42857d13513229649, type: 3}
+  - {fileID: 2695116148696317991, guid: 0968d4f46d8c5e44e9958d6f83eaca79, type: 3}
   player: {fileID: 0}
   playerMovement: {fileID: 0}
   spawnPoints:

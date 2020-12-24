@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject WinUI;
     public GameObject LoseUI;
+    public GameObject Spikes;
 
     public GameObject playerSpawner;
 
@@ -26,11 +27,14 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        Spikes.SetActive(false);
         WinUI.SetActive(true);
     }
 
     public void Lose()
     {
+        SpikesScript spikesBruh = Spikes.GetComponent<SpikesScript>();
+        spikesBruh.TurnOffSpikes();
         LoseUI.SetActive(true);
     }
 
