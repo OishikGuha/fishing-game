@@ -21,11 +21,16 @@ public class PlayerSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        randomInt = Random.Range(0, spawnPoints.Length);
-        randomInt = Random.Range(0, playerPrefabs.Length);
 
-        player = Instantiate(playerPrefabs[randomInt], spawnPoints[randomInt].transform.position, Quaternion.identity);
-        playerMovement = player.GetComponent<PlayerMovement>();
+        for (int x = 0; x < playerPrefabs.Length; x++)
+        {
+            randomInt = Random.Range(0, spawnPoints.Length);
+            randomInt = Random.Range(0, playerPrefabs.Length);
+
+
+            player = Instantiate(playerPrefabs[randomInt], spawnPoints[randomInt].transform.position, Quaternion.identity);
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
     }
 
     // Update is called once per frame

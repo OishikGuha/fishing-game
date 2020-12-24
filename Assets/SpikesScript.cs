@@ -5,19 +5,11 @@ using UnityEngine;
 public class SpikesScript : MonoBehaviour
 {
 
-    private GameObject[] spikes;
-
-    private int spikesInt;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        spikesInt = spikes.Length;
-    }
+    public GameObject[] spikes;
 
     public void TurnOffSpikes()
     {
-        for (int x = 0; x < spikesInt; x++)
+        for (int x = 0; x < spikes.Length; x++)
         {
             Collider2D spikeCollider = spikes[x].GetComponent<Collider2D>();
 

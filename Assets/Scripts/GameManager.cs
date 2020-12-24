@@ -15,9 +15,20 @@ public class GameManager : MonoBehaviour
     
     public bool winAnimHasEnded;
 
+    bool Lost = false;
+    bool Won = false;
+
+    private SpikesScript spikesBruh;
+
+    private void Awake()
+    {
+
+    }
+
     private void Start()
     {
         player = playerSpawner.GetComponent<PlayerSpawn>().player;
+
     }
 
     public void Restart()
@@ -27,15 +38,30 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        Spikes.SetActive(false);
-        WinUI.SetActive(true);
+        SpikesScript spikesBruh = Spikes.GetComponent<SpikesScript>();
+
+        Won = true;
+
+        if (Won && !Lost)
+        {
+            spikesBruh.TurnOffSpikes();
+
+            WinUI.SetActive(true);
+        }
     }
 
     public void Lose()
     {
         SpikesScript spikesBruh = Spikes.GetComponent<SpikesScript>();
-        spikesBruh.TurnOffSpikes();
-        LoseUI.SetActive(true);
+        Lost = true;
+
+        if (!Won && Lost)
+        {
+            spikesBruh.TurnOffSpikes();
+
+            LoseUI.SetActive(true);
+        }
+
     }
 
 }
