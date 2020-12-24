@@ -10,10 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 pushLeft;
     public Vector2 pushRight;
 
+    private bool facingRight = false;
+
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,13 +26,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown("a"))
         {
-            rb.AddForce(pushLeft * Time.deltaTime);
-
+            rb.AddForce(pushLeft * 10 * Time.deltaTime);
+            animator.SetBool("flipped", false);
         }
         if (Input.GetKeyDown("d"))
         {
-            rb.AddForce(pushRight * Time.deltaTime);
-
+            rb.AddForce(pushRight * 10 * Time.deltaTime);
+            animator.SetBool("flipped", true);
         }
     }
 

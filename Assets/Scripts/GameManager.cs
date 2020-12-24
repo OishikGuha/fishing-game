@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject WinUI;
+    public GameObject LoseUI;
 
     public GameObject playerSpawner;
 
@@ -25,18 +26,12 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        if (winAnimHasEnded == true)
-        {
-
-        }
         WinUI.SetActive(true);
-        Debug.Log(winAnimHasEnded);
-
     }
 
-    public void PushLeft()
+    public void Lose()
     {
-
+        LoseUI.SetActive(true);
     }
 
 }
