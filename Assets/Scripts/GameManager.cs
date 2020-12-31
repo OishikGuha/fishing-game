@@ -5,28 +5,27 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    public Goal goal;
+    
+    public GameObject UI;
     public GameObject WinUI;
     public GameObject LoseUI;
     public GameObject Spikes;
-
     public GameObject playerSpawner;
 
-    private GameObject player;
-    
-    public bool winAnimHasEnded;
+    public Animator ButtonAnimator;
 
+    [HideInInspector]
+    public GameObject player;
+    
     bool Lost = false;
     bool Won = false;
 
     private SpikesScript spikesBruh;
 
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
+        UI.SetActive(true);
         player = playerSpawner.GetComponent<PlayerSpawn>().player;
 
     }
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         if (Won && !Lost)
         {
-            spikesBruh.TurnOffSpikes();
+            //spikesBruh.TurnOffSpikes();
 
             WinUI.SetActive(true);
         }

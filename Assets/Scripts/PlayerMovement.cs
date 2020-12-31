@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,20 +11,30 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 pushLeft;
     public Vector2 pushRight;
+    
+    public Animator animator;
 
-    private bool facingRight = false;
+    private Button Rbutton;
+    private Button Lbutton;
 
-    private Animator animator;
+    private PlayerSpawn spawner;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawner = FindObjectOfType<PlayerSpawn>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        Rbutton = spawner.rButton;
+        Lbutton = spawner.lButton;
+
+        Debug.Log(animator);
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown("a"))
         {
@@ -34,16 +46,26 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(pushRight * 10 * Time.deltaTime);
             animator.SetBool("flipped", true);
         }
+
+        Rbutton.onClick.AddListener(PushRight);
+        Lbutton.onClick.AddListener(PushLeft);
+
     }
 
     public void PushLeft()
     {
         rb.AddForce(pushLeft * Time.deltaTime);
+        animator.SetBool("flipped", false);
     }
 
     public void PushRight()
     {
         rb.AddForce(pushRight * Time.deltaTime);
+        animator.SetBool("flipped", true);
     }
 
+    public Animator GetAnimator(Animator animatorF)
+    {
+        return animatorF = animator;
+    }
 }
