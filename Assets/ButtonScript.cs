@@ -8,6 +8,8 @@ public class ButtonScript : MonoBehaviour
     public BarScript bar;
     public LineRenderer wire;
 
+    public Animator buttonAnimator;
+
     private GameManager gm;
 
     // Start is called before the first frame update
@@ -27,8 +29,16 @@ public class ButtonScript : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            gm.ButtonAnimator.SetBool("pressed", true);
-            bar.switchColors = true;
+            if(bar.invertColors == false)
+            {
+                buttonAnimator.SetBool("pressed", true);
+                bar.switchColors = true;
+            }
+            else if (bar.invertColors)
+            {
+                buttonAnimator.SetBool("pressed", true);
+                bar.switchColors = false;
+            }
         }
     }
 

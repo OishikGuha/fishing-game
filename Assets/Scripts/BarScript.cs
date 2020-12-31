@@ -9,6 +9,8 @@ public class BarScript : MonoBehaviour
     public Sprite greenBar;
     public Sprite blueBar;
 
+    public bool invertColors;
+
     public GameManager gm;
 
     private string color = "blue";
@@ -20,20 +22,34 @@ public class BarScript : MonoBehaviour
 
     private void Update()
     {
-        if (switchColors)
+        if (invertColors == false)
         {
-            SwitchColors("green");
+            if (switchColors)
+            {
+                SwitchColors("green");
+            }
+            else
+            {
+                SwitchColors("blue");
+            }
         }
-        else
+        else if (invertColors)
         {
-            SwitchColors("blue");
+            if (switchColors)
+            {
+                SwitchColors("green");
+            }
+            else
+            {
+                SwitchColors("blue");
+            }
         }
     }
 
     public void SwitchColors(string color)
     {
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-
+       
         if (color == "green")
         {
             sr.sprite = greenBar;

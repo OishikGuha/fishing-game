@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     public GameObject Spikes;
     public GameObject playerSpawner;
 
-    public Animator ButtonAnimator;
-
     [HideInInspector]
     public GameObject player;
     
